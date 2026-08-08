@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meva Mix 🍓</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        Meva <span>Mix</span> 🍓
+    </div>
+
+    <nav>
+        <a href="#home">Bosh sahifa</a>
+        <a href="#products">Mahsulotlar</a>
+        <a href="#baskets">Savatlar</a>
+    </nav>
+
+    <button class="cart-btn" onclick="openBasketChooser()">
+        🛒 Savat
+        <b id="cartCount">0</b>
+    </button>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">PREMIUM MEVA MIX</div>
+
+        <h1>
+            Mazali dunyo
+            <span>Meva Mix</span> bilan 🍓
+        </h1>
+
+        <p>
+            Eng sara mevalar, shokoladlar, konfetlar,
+            ichimliklar va maxsus tayyor savatlar.
+        </p>
+
+        <a href="#products" class="hero-btn">
+            Xarid qilish →
+        </a>
+
+    </div>
+
+    <div class="hero-visual">
+        <div class="fruit-circle">🍓</div>
+        <div class="floating-fruit f1">🍊</div>
+        <div class="floating-fruit f2">🍇</div>
+        <div class="floating-fruit f3">🍎</div>
+        <div class="floating-fruit f4">🍌</div>
+    </div>
+
+</section>
+
+
+<section class="categories">
+
+    <button onclick="showProducts('all')">✨ Barchasi</button>
+    <button onclick="showProducts('fruit')">🍓 Mevalar</button>
+    <button onclick="showProducts('sweet')">🍫 Shokolad & Konfet</button>
+    <button onclick="showProducts('drink')">🥤 Ichimliklar</button>
+    <button onclick="showProducts('kids')">🧸 Bolalar</button>
+
+</section>
+
+
+<section class="section" id="products">
+
+    <div class="title">
+
+        <span>MEVA MIX SHOP</span>
+
+        <h2>Premium mahsulotlar</h2>
+
+        <p>O'zingizga yoqqan mahsulotni tanlang</p>
+
+    </div>
+
+    <div class="products" id="productsList"></div>
+
+</section>
+
+
+<section class="section baskets-section" id="baskets">
+
+    <div class="title">
+
+        <span>MAXSUS TAKLIF</span>
+
+        <h2>Tayyor savatlar 🧺</h2>
+
+        <p>Sovg'a uchun tayyor premium to'plamlar</p>
+
+    </div>
+
+    <div class="baskets" id="basketsList"></div>
+
+</section>
+
+
+<!-- SAVAT TANLASH -->
+
+<div class="modal-bg" id="basketChooser">
+
+    <div class="chooser">
+
+        <button class="close" onclick="closeBasketChooser()">×</button>
+
+        <div class="chooser-icon">🧺</div>
+
+        <h2>Qanday savat kerak?</h2>
+
+        <p>O'zingizga mos tayyor savatni tanlang</p>
+
+        <div class="basket-options">
+
+            <button onclick="chooseBasket('fruit')">
+                🍓
+                <strong>Mevali savat</strong>
+                <small>Faqat sara mevalar</small>
+            </button>
+
+            <button onclick="chooseBasket('sweet')">
+                🍫
+                <strong>Shokolad + Konfet</strong>
+                <small>Shirinliklar to'plami</small>
+            </button>
+
+            <button onclick="chooseBasket('mix')">
+                🍓🍫
+                <strong>Meva + Shirinlik</strong>
+                <small>Eng mashhur tanlov</small>
+            </button>
+
+            <button onclick="chooseBasket('drink')">
+                🥤
+                <strong>Ichimlikli savat</strong>
+                <small>Meva va ichimliklar</small>
+            </button>
+
+            <button onclick="chooseBasket('kids')">
+                🧸
+                <strong>Bolalar savati</strong>
+                <small>Konfet, lollipop va shokolad</small>
+            </button>
+
+            <button onclick="chooseBasket('premium')">
+                👑
+                <strong>Premium Mix</strong>
+                <small>Hammasidan maxsus to'plam</small>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SAVAT -->
+
+<div class="modal-bg" id="cartModal">
+
+    <div class="cart">
+
+        <button class="close" onclick="closeCart()">×</button>
+
+        <h2>🛒 Sizning savatingiz</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="promo">
+
+            <input id="promoInput" placeholder="Promokod">
+
+            <button onclick="applyPromo()">
+                Qo'llash
+            </button>
+
+        </div>
+
+        <div id="promoMessage"></div>
+
+        <div class="total">
+            <span>Jami:</span>
+            <strong id="totalPrice">0 so'm</strong>
+        </div>
+
+        <button class="order-btn" onclick="openOrder()">
+            Buyurtma berish 🚀
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- BUYURTMA -->
+
+<div class="modal-bg" id="orderModal">
+
+    <div class="order">
+
+        <button class="close" onclick="closeOrder()">×</button>
+
+        <h2>📦 Buyurtma berish</h2>
+
+        <p>Yetkazib berish ma'lumotlarini kiriting</p>
+
+        <input id="name" placeholder="Ismingiz">
+
+        <input id="phone" placeholder="Telefon raqamingiz">
+
+        <textarea id="address" placeholder="Manzil"></textarea>
+
+        <button onclick="sendOrder()">
+            Buyurtmani yuborish ✓
+        </button>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <div class="logo">
+        Meva <span>Mix</span> 🍓
+    </div>
+
+    <p>Premium mevalar va shirinliklar do'koni</p>
+
+    <small>© 2026 Meva Mix</small>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

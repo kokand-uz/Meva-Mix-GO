@@ -1,254 +1,180 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Meva Mix 🍓</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="MEVA MIX — yangi, shirin va mazali mevalar.">
+  <title>MEVA MIX | Fresh Fruit Market</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
 
-<header class="header">
+  <div class="topbar">
+    🍓 MEVA MIX — Tabiatning eng shirin ne'matlari!
+  </div>
 
-    <div class="logo">
-        Meva <span>Mix</span> 🍓
-    </div>
+  <header class="header">
+  <a href="#home" class="brand">
+    <img src="images/meva-mix-logo.png.png" alt="MEVA MIX" width="150">
+</a>
 
-    <nav>
-        <a href="#home">Bosh sahifa</a>
-        <a href="#products">Mahsulotlar</a>
-        <a href="#baskets">Savatlar</a>
+    <nav class="navigation" id="navigation">
+      <a href="#home">Bosh sahifa</a>
+      <a href="#products">Mevalar</a>
+      <a href="#about">Biz haqimizda</a>
     </nav>
 
-    <button class="cart-btn" onclick="openBasketChooser()">
-        🛒 Savat
-        <b id="cartCount">0</b>
+    <button class="cart-open" id="openCart">
+      🛒 Savatcha <span id="cartCount">0</span>
     </button>
 
-</header>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish">☰</button>
+  </header>
 
-
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <div class="badge">PREMIUM MEVA MIX</div>
-
-        <h1>
-            Mazali dunyo
-            <span>Meva Mix</span> bilan 🍓
-        </h1>
-
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <div class="pill">🌿 YANGI MEVALAR OLAMI</div>
+        <h1>Har kuni yangi,<br>har luqmada <span>mazza!</span></h1>
         <p>
-            Eng sara mevalar, shokoladlar, konfetlar,
-            ichimliklar va maxsus tayyor savatlar.
+          Sevimli mevalaringizni MEVA MIX bilan kashf eting.
+          Yorqin ranglar, tabiiy ta'm va ajoyib tanlov — barchasi bir joyda!
         </p>
+        <a href="#products" class="main-button">Mevalarni ko‘rish <span>→</span></a>
 
-        <a href="#products" class="hero-btn">
-            Xarid qilish →
-        </a>
+        <div class="hero-features">
+          <div><strong>🍎 30+</strong><small>Meva turi</small></div>
+          <div><strong>🌱 Fresh</strong><small>Yangi tanlov</small></div>
+          <div><strong>💚 100%</strong><small>Mazza va quvonch</small></div>
+        </div>
+      </div>
 
-    </div>
+      <div class="hero-art">
+        <div class="hero-orbit"></div>
+        <div class="hero-fruits">🍉🍓🍊</div>
+        <span class="floating fruit-a">🍋</span>
+        <span class="floating fruit-b">🍇</span>
+        <span class="floating fruit-c">🥝</span>
+        <div class="fresh-sticker">FRESH<br>EVERY DAY</div>
+      </div>
+    </section>
 
-    <div class="hero-visual">
-        <div class="fruit-circle">🍓</div>
-        <div class="floating-fruit f1">🍊</div>
-        <div class="floating-fruit f2">🍇</div>
-        <div class="floating-fruit f3">🍎</div>
-        <div class="floating-fruit f4">🍌</div>
-    </div>
+    <section class="advantages" id="about">
+      <article class="advantage">
+        <span>🍎</span>
+        <div><h3>Yaxshi tanlov</h3><p>Sevimli mevalaringiz bir joyda</p></div>
+      </article>
+      <article class="advantage">
+        <span>🌿</span>
+        <div><h3>Tabiiy lazzat</h3><p>Har xil rang va ta'mlar</p></div>
+      </article>
+      <article class="advantage">
+        <span>💚</span>
+        <div><h3>Qulay xarid</h3><p>Oson qidirish va savatcha</p></div>
+      </article>
+    </section>
 
-</section>
+    <section class="products-section" id="products">
+      <div class="section-top">
+        <div>
+          <div class="eyebrow">BIZNING KATALOG</div>
+          <h2>Mevalar <span>olami</span></h2>
+          <p>Bugun qaysi mevani tanlaysiz?</p>
+        </div>
+        <div id="productCount" class="product-count">0 ta meva</div>
+      </div>
 
+      <div class="tools">
+        <label class="search">
+          <span>🔍</span>
+          <input type="search" id="searchInput" placeholder="Meva nomini qidiring...">
+          <button id="clearSearch" aria-label="Qidiruvni tozalash">✕</button>
+        </label>
 
-<section class="categories">
+        <select id="sortSelect" aria-label="Mevalarni saralash">
+          <option value="default">Odatiy tartib</option>
+          <option value="cheap">Arzonidan boshlab</option>
+          <option value="expensive">Qimmatidan boshlab</option>
+          <option value="name">Nom bo‘yicha</option>
+        </select>
+      </div>
 
-    <button onclick="showProducts('all')">✨ Barchasi</button>
-    <button onclick="showProducts('fruit')">🍓 Mevalar</button>
-    <button onclick="showProducts('sweet')">🍫 Shokolad & Konfet</button>
-    <button onclick="showProducts('drink')">🥤 Ichimliklar</button>
-    <button onclick="showProducts('kids')">🧸 Bolalar</button>
+      <div class="category-list" id="categoryList">
+        <button class="category active" data-category="Barchasi">🍉 Barchasi</button>
+        <button class="category" data-category="Mevalar">🍎 Mevalar</button>
+      </div>
 
-</section>
+      <div class="fruit-grid" id="fruitGrid"></div>
+    </section>
 
-
-<section class="section" id="products">
-
-    <div class="title">
-
-        <span>MEVA MIX SHOP</span>
-
-        <h2>Premium mahsulotlar</h2>
-
-        <p>O'zingizga yoqqan mahsulotni tanlang</p>
-
-    </div>
-
-    <div class="products" id="productsList"></div>
-
-</section>
-
-
-<section class="section baskets-section" id="baskets">
-
-    <div class="title">
-
+    <section class="promo-banner">
+      <div class="promo-emoji">🎁</div>
+      <div class="promo-text">
         <span>MAXSUS TAKLIF</span>
+        <h2>10% chegirma siz uchun!</h2>
+        <p>Savatchada <b>MEVAMIX10</b> kodini ishlating.</p>
+      </div>
+      <button class="main-button" id="copyPromo">Kodni nusxalash</button>
+    </section>
+  </main>
 
-        <h2>Tayyor savatlar 🧺</h2>
+  <footer class="footer">
+    <a href="#home" class="footer-logo">
+      <img src="meva-mix-logo.png" alt="MEVA MIX">
+    </a>
+    <p>Tabiatning shirin ne'matlari. 💚</p>
+    <small>© <span id="year"></span> MEVA MIX. Barcha huquqlar himoyalangan.</small>
+  </footer>
 
-        <p>Sovg'a uchun tayyor premium to'plamlar</p>
+  <div class="overlay" id="overlay"></div>
 
+  <aside class="cart-panel" id="cartPanel" aria-label="Savatcha">
+    <div class="cart-heading">
+      <div><span class="eyebrow">SIZNING TANLOVINGIZ</span><h2>🛒 Savatcha</h2></div>
+      <button id="closeCart" class="close-button" aria-label="Yopish">✕</button>
     </div>
 
-    <div class="baskets" id="basketsList"></div>
+    <div class="cart-products" id="cartProducts"></div>
 
-</section>
+    <div class="cart-summary">
+      <label for="couponInput">Promokod</label>
+      <div class="coupon">
+        <input id="couponInput" placeholder="MEVAMIX10">
+        <button id="applyCoupon">Qo‘llash</button>
+      </div>
+      <p id="couponMessage"></p>
 
+      <div class="summary-line"><span>Jami mahsulotlar</span><b id="subtotal">0 so‘m</b></div>
+      <div class="summary-line"><span>Chegirma</span><b id="discount">0 so‘m</b></div>
+      <div class="summary-line total"><span>Umumiy narx</span><b id="total">0 so‘m</b></div>
 
-<!-- SAVAT TANLASH -->
-
-<div class="modal-bg" id="basketChooser">
-
-    <div class="chooser">
-
-        <button class="close" onclick="closeBasketChooser()">×</button>
-
-        <div class="chooser-icon">🧺</div>
-
-        <h2>Qanday savat kerak?</h2>
-
-        <p>O'zingizga mos tayyor savatni tanlang</p>
-
-        <div class="basket-options">
-
-            <button onclick="chooseBasket('fruit')">
-                🍓
-                <strong>Mevali savat</strong>
-                <small>Faqat sara mevalar</small>
-            </button>
-
-            <button onclick="chooseBasket('sweet')">
-                🍫
-                <strong>Shokolad + Konfet</strong>
-                <small>Shirinliklar to'plami</small>
-            </button>
-
-            <button onclick="chooseBasket('mix')">
-                🍓🍫
-                <strong>Meva + Shirinlik</strong>
-                <small>Eng mashhur tanlov</small>
-            </button>
-
-            <button onclick="chooseBasket('drink')">
-                🥤
-                <strong>Ichimlikli savat</strong>
-                <small>Meva va ichimliklar</small>
-            </button>
-
-            <button onclick="chooseBasket('kids')">
-                🧸
-                <strong>Bolalar savati</strong>
-                <small>Konfet, lollipop va shokolad</small>
-            </button>
-
-            <button onclick="chooseBasket('premium')">
-                👑
-                <strong>Premium Mix</strong>
-                <small>Hammasidan maxsus to'plam</small>
-            </button>
-
-        </div>
-
+      <button class="checkout" id="checkoutButton">Buyurtma ma'lumotlari →</button>
+      <p class="cart-hint">Buyurtma hali internet orqali yuborilmaydi.</p>
     </div>
+  </aside>
 
-</div>
+  <dialog id="orderDialog" class="order-dialog">
+    <form id="orderForm">
+      <button type="button" class="dialog-close" id="closeDialog">✕</button>
+      <span class="eyebrow">MEVA MIX</span>
+      <h2>Buyurtma ma'lumotlari</h2>
+      <p>Ma'lumotlarni to‘ldirib, buyurtma faylini tayyorlang.</p>
 
+      <label for="customerName">Ismingiz</label>
+      <input id="customerName" required placeholder="Ismingiz">
 
-<!-- SAVAT -->
+      <label for="customerPhone">Telefon raqami</label>
+      <input id="customerPhone" type="tel" required placeholder="+998 ...">
 
-<div class="modal-bg" id="cartModal">
+      <label for="customerAddress">Manzil</label>
+      <textarea id="customerAddress" required placeholder="Manzilingiz"></textarea>
 
-    <div class="cart">
-
-        <button class="close" onclick="closeCart()">×</button>
-
-        <h2>🛒 Sizning savatingiz</h2>
-
-        <div id="cartItems"></div>
-
-        <div class="promo">
-
-            <input id="promoInput" placeholder="Promokod">
-
-            <button onclick="applyPromo()">
-                Qo'llash
-            </button>
-
-        </div>
-
-        <div id="promoMessage"></div>
-
-        <div class="total">
-            <span>Jami:</span>
-            <strong id="totalPrice">0 so'm</strong>
-        </div>
-
-        <button class="order-btn" onclick="openOrder()">
-            Buyurtma berish 🚀
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- BUYURTMA -->
-
-<div class="modal-bg" id="orderModal">
-
-    <div class="order">
-
-        <button class="close" onclick="closeOrder()">×</button>
-
-        <h2>📦 Buyurtma berish</h2>
-
-        <p>Yetkazib berish ma'lumotlarini kiriting</p>
-
-        <input id="name" placeholder="Ismingiz">
-
-        <input id="phone" placeholder="Telefon raqamingiz">
-
-        <textarea id="address" placeholder="Manzil"></textarea>
-
-        <button onclick="sendOrder()">
-            Buyurtmani yuborish ✓
-        </button>
-
-    </div>
-
-</div>
-
-
-<footer>
-
-    <div class="logo">
-        Meva <span>Mix</span> 🍓
-    </div>
-
-    <p>Premium mevalar va shirinliklar do'koni</p>
-
-    <small>© 2026 Meva Mix</small>
-
-</footer>
-
-
-<script src="script.js"></script>
+      <button type="submit" class="checkout">Buyurtma faylini tayyorlash</button>
+      <p id="orderMessage" class="order-message"></p>
+    </form>
+  </dialog>
 
 </body>
 </html>
